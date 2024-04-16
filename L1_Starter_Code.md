@@ -1,46 +1,39 @@
 # Starter Code
 
-The first thing you'll need to do is to clone the project starter code. We will be building on this starter UI to add in token trading functionality.
+The first thing you'll need to do is to clone the repo and go into the L1 folder. We will be building on this starter UI to add in token trading functionality.
 
 ```
-
-git clone https://github.com/jlin27/token-swap-dapp-course-code/tree/main/L1
-
+git clone https://github.com/0xProject/token-swap-dapp-course-code/tree/main
+cd L1
 ```
 
 To run the project, first install the project dependencies
 
 ```
-
 npm install
-
 ```
 
 Then, start the Next.js development server
 
 ```
-
 npm run dev
-
 ```
 
 4. Navigate to [http://localhost:3000](http://localhost:3000/)
 
 ```
-
 open http://localhost:3000
-
 ```
 
 ## UI Walk-through
 
 You should see the following UI
 
-<TODO: Insert app screenshot>
+<img width="416" alt="starter_code" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/9df83851-3f3b-4ccc-be0a-a0810cbf2f47">
 
 A couple key features to call out:
 
-1.  **Connect Wallet button** - When this app is complete, clicking this button will enable the user to connect to their wallet, switch chains if needed, and enable the "Swap" button. This wallet connection is powered by RainbowKit.
+1.  **Connect Wallet button** - Currently this is a dummy button. When this app is complete, clicking this button will enable the user to connect to their wallet, switch chains if needed, and enable the "Swap" button. This wallet connection is powered by RainbowKit.
 
 2.  **Token selectors** - Currently the two token selectors for the sell and buy tokens default to WMATIC and DAI. We will learn how to add more tokens to these lists.
 
@@ -61,3 +54,4 @@ This code is set up with [Next.js App Router](https://nextjs.org/docs), so the a
 - `app/layout.tsx`This file is used to render the initial layout of your application, and it can be used to add global functionality to your application.
 
 - `src/constants.ts` - List of constants for the sell and buy token dropdown lists
+
