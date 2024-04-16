@@ -1,17 +1,20 @@
 # RainbowKit 🌈
 
+In this lesson, we will learn how to allow users to connect their wallets to our dApp using RainbowKit. 
+
 ## What is it?
 
-[RainbowKit](https://www.rainbowkit.com/) is a React library that makes it easy to add wallet connection to your dapp. We are leveraging their [Next.js App Router example](https://www.rainbowkit.com/docs/installation#further-examples) in our app.
+[RainbowKit](https://www.rainbowkit.com/) is a React library that makes it easy to add wallet connection to your dApp. We are leveraging their [Next.js App Router example](https://www.rainbowkit.com/docs/installation#further-examples) in our example. 
 
 Check out their [installation instructions](https://www.rainbowkit.com/docs/installation) for full details on the imports, configuration, and providers. You can [configure](https://www.rainbowkit.com/docs/installation#configure) your desired chains and [customize the button UI](https://www.rainbowkit.com/docs/custom-connect-button), which we will demonstrate in this dApp.
 
 ## Setup WalletConnect `projectId` in providers.tsx
 
-Every dApp that relies on WalletConnect a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+RainbowKit relies on WalletConnect which requires a `projectId`. To get one, go to [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes. Add it into the `/app/providers.tsx` file. 
 
 ```
 // /app/providers.tsx file
+
 const config = getDefaultConfig({
    ...
    projectId: "YOUR_WALLETCONNECT_PROJECT_ID",
@@ -19,33 +22,35 @@ const config = getDefaultConfig({
 
 ## Add ConnectButton to top right
 
-Let's add the standard ConnectButton to the top right of the dApp.
+Typically, apps have a connect wallet button at the top of the app. Let's add a standard ConnectButton to the top right. 
 
-- import in `page.tsx` and `components/price`
+First, setup the imports in `page.tsx` and `components/price`
 
 ```
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 ```
 
-- then add the button in the header of `components/price`
+Then add the button in the header of `components/price`
 
 ```
 // /app/components/price.tsx file
-        <a href="https://0x.org/" target="_blank" rel="noopener noreferrer">
-          <Image src={ZeroExLogo} alt="Icon" width={50} height={50} />
-        </a>
-        <ConnectButton />
+
+<a href="https://0x.org/" target="_blank" rel="noopener noreferrer">
+ <Image src={ZeroExLogo} alt="Icon" width={50} height={50} />
+</a>
+<ConnectButton />
 ```
 
 ## Add custom button
 
-Now we will replace our Dummy Connect Wallet Button with a Custom ConnectButton. The code is provided for us in RainbowKit's docs [here](https://www.rainbowkit.com/docs/custom-connect-button). We've made some slight modifications to the button name and styling; otherwise, it is the same.
+Next, we want to replace our "Dummy Connect Wallet" Button with a Custom ConnectButton. The code is provided for us in RainbowKit's docs [here](https://www.rainbowkit.com/docs/custom-connect-button). We've made some slight modifications to the button name and styling; otherwise, it is the same.
 
 ```
 // Replace this Dummy Button code
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
-          Dummy Connect Wallet
-        </button>
+
+<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+ Dummy Connect Wallet
+</button>
 ```
 
 ```
@@ -145,4 +150,5 @@ Now we will replace our Dummy Connect Wallet Button with a Custom ConnectButton.
 
 Now we should have a swap widget with two buttons for users to connect their wallets, powered by RainbowKit! Play around with these buttons, connect your wallet and switch chains.
 
-<TODO: Insert screenshot>
+![L2_final](https://github.com/jlin27/token-swap-dapp-course/assets/8042156/c03d8bbd-a944-45d3-8681-7db2ab332c99)
+
