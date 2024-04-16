@@ -152,3 +152,8 @@ Now we should have a swap widget with two buttons for users to connect their wal
 
 ![L2_final](https://github.com/jlin27/token-swap-dapp-course/assets/8042156/c03d8bbd-a944-45d3-8681-7db2ab332c99)
 
+See the completed code here
+```
+https://github.com/0xProject/token-swap-dapp-course-code/tree/main/L2
+```
+
