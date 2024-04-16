@@ -1,8 +1,10 @@
 # Fetch and Display Token List
 
-We currently two drop downs, one to select a _sellToken_ and one to select a _buyToken_.
+Currently our app has two dropdowns, one to select a _sellToken_ and one to select a _buyToken_.
 
-Where do this list of tokens come from?
+<img width="138" alt="dropdowns" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/1b3f00c2-ba1c-474c-b437-e0e8e2818718">
+
+Where do these lists of tokens come from?
 
 Thankfully there are several established sources of curated and open-sourced [Token Lists](https://tokenlists.org/) which standardize lists of ERC20 tokens to filter out high quality, legitimate tokens from scams, fakes, and duplicates. Read more about the importance of token lists [here](https://uniswap.org/blog/token-lists).
 
@@ -10,11 +12,11 @@ As developers, we can choose to ingest the entire list or customize our own toke
 
 For ERC20 tokens, these lists typically include crucial metadata - such as the token names (Wrapped Matic), symbol (MATIC), address, and logoURI - which can be leveraged by apps such as ours.
 
-Let's retrieve a list of ERC20 tokens to populate the modal, so that a user can select a token to trade.
+Let's learn how to retrieve a list of ERC20 tokens to populate the modal, so that a user can select a token to trade.
 
 ## Code
 
-In our demo, we've pre-populated a curated a small token list for you in `/src/constants.ts`.
+In our demo, we've pre-populated a curated a small token list for you in [`/src/constants.ts`](https://github.com/0xProject/token-swap-dapp-course-code/blob/main/L3/src/constants.ts).
 
 > In production level apps, it's common practice to maintain a token list since some apps don't support _all_ available tokens.
 
@@ -23,8 +25,10 @@ In our demo, we've pre-populated a curated a small token list for you in `/src/c
 All tokens contain the following metadata:
 
 ```
+// See /src/constants.ts
+
 name:  string;
-address:  string;
+address:  Address;
 symbol:  string;
 decimals:  number;
 chainId:  number;
@@ -33,7 +37,7 @@ logoURI:  string;
 
 The tokens are setup in the array `POLYGON_TOKENS` which are accessible via 2 objects, `POLYGON_TOKENS_BY_SYMBOL` and `POLYGON_TOKENS_BY_ADDRESS`. At different points in the dApp, we may need to access the metadata from different keys.
 
-These token lists are called from the dropdown lists in `/app/component/price.tsx`.
+These token lists are called from the dropdown lists in [`/app/component/price.tsx`](https://github.com/0xProject/token-swap-dapp-course-code/blob/main/L3/app/components/price.tsx#L95-L103).
 
 ```
 ...
@@ -88,13 +92,30 @@ Here is the metadata for DAI on Polygon (see details on [PolygonScan](https://po
   },
 ```
 
+Format it correctly inside `/src/constants.ts` so it is accessible by all our objects. 
+
 Once you've added DAI to all the objects, you will be able to select it from the dropdown!
 
-<TODO: Insert screenshot with DAI>
+<img width="336" alt="L3" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/2f995da3-9e9b-4c12-ba6f-3db86e1243c0">
+
 
 ## Other Notable Token Lists
+
+Want to add more token? Check out these open-sourced Token Lists: 
 
 - Tokenlists: [https://tokenlists.org/](https://tokenlists.org/)
 - Trust Wallet: [https://github.com/trustwallet/assets/tree/master/blockchains](https://github.com/trustwallet/assets/tree/master/blockchains)
 - Polygon Assets github: [https://github.com/maticnetwork/polygon-token-assets/tree/main/assets/tokenAssets](https://github.com/maticnetwork/polygon-token-assets/tree/main/assets/tokenAssets)
 - Coin Gecko: [https://tokenlists.org/token-list?url=https://tokens.coingecko.com/uniswap/all.json](https://tokenlists.org/token-list?url=https://tokens.coingecko.com/uniswap/all.json)
+
+Additionally, 0x working on a Token Registry API that provides apps with dynamic, comprehesive, and curated token metadata. The API is currently in progress. [Contact us](https://0x.org/contact) if you would like early access. 
+
+## Recap
+
+In this lesson, we learned about how to source token metadata, curate a token list, and surface this information to users through our UI. 
+
+See the final code for this lesson here: 
+
+```
+https://github.com/0xProject/token-swap-dapp-course-code/tree/main/L3
+```
