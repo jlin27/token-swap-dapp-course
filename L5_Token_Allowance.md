@@ -126,7 +126,7 @@ args: [takerAddress, exchangeProxy(chainId)],
 
 ```
 
-4. If allowance approved, update custom button with the proper message:
+4. If allowance approved, we will check if the user has sufficient balance of the sellToken to proceed to make the swap. Based off of this logic, we will the update custom button with the proper message:
    - Show "Insufficient Balance" if the connected wallet does not have enough funds to make the swap
    - Show "Review Trade" if the approval went through and the user can proceed to a firm quote and perform the swap.
 
@@ -160,6 +160,7 @@ In this lesson, we covered:
 * what is token allowance
 * how to approve one, specifically for the [0x Exchange Proxy smart contract](https://docs.0x.org/introduction/0x-cheat-sheet#exchange-proxy-addresses)
 * how to modify the dApp UI to adjust to whether or not a token allowance approval is needed
+* check if the user has sufficient balance to proceed to place the trade
 
 See the full code for this lesson here: 
 
