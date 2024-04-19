@@ -38,7 +38,7 @@ A couple key features to call out:
 
 2.  **Token selectors** - Currently the two token selectors for the sell and buy tokens default to WMATIC and DAI. We will learn how to add more tokens to these lists.
 
-3.  **Amount** - These two amount inputs allow users to input the amount of tokens they would like to sell and buy.
+3.  **Amount** - These two amount inputs allow users to input the amount of tokens they would like to _sell_ and _buy_. Note these fields will only take numbers. Read more about sells vs buys [here](https://0x.org/docs/developer-resources/glossary#buys-and-sells). 
 
 4.  **Swap Button** - As mentioned above, the "Swap" button is currently disabled, but we will enable it when the user has signed into MetaMask.
 
