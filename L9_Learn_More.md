@@ -2,6 +2,7 @@
 
 ## What you've accomplished
 Congrats! You've built a token swapping dApp that allows you get retrieve live pricing and execute live swaps on-chain! 🚀
+<img width="432" alt="Screenshot 2024-04-19 at 1 59 24 PM" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/92a5a4b7-1210-486f-8b78-01a0761c1dcb">
 
 In this course, you learned how to:
 
