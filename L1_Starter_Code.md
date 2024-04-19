@@ -29,7 +29,8 @@ open http://localhost:3000
 
 You should see the following UI
 
-<img width="416" alt="starter_code" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/9df83851-3f3b-4ccc-be0a-a0810cbf2f47">
+<img width="392" alt="Screenshot 2024-04-19 at 2 03 50 PM" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/a87b1324-7444-4af1-92f6-8fc442d0bbeb">
+
 
 A couple key features to call out:
 
