@@ -13,6 +13,11 @@ This allowance approval will show up in the user's wallet for them to sign. Here
 <img width="192" alt="token allowance" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/9743b971-a8bc-4269-8b11-77ee2c64b609">
 
 
+> Note that approving an allowance is a transaction, which requires users to pay gas (e.g. user must hold the chain's native token, ETH on mainnet, MATIC on Polygon). Looking for a gasless approach? Check out [Gasless API](https://0x.org/docs/0x-swap-api/guides/build-token-swap-dapp-nextjs).
+
+> Need to quickly revoke an allowance while testing? To revoke an allowance, you can set the allowance to 0. This can be done programmatically or through a UI such as https://revoke.cash/ .
+
+
 ## Here is the UI we need to setup:
 
 
