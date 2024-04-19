@@ -49,7 +49,8 @@ By the end of this course, you will build a simple dApp for token swaps using [N
 
 Checkout with live demo 👉 [here](https://0x-nextjs-demo-app-git-main-0x-eng.vercel.app/)
 
-<img width="437" alt="priceView_with_fee" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/8e2ee484-4503-44f5-86ed-1e369b792773">
+<img width="432" alt="Screenshot 2024-04-19 at 1 59 24 PM" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/6ceba94f-0220-4bf4-b4f8-9d748652eb1f">
+
 
 
 ## Pre-requisites
