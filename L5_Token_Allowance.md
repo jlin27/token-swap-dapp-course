@@ -15,6 +15,7 @@ This allowance approval will show up in the user's wallet for them to sign. Here
 
 ## Here is the UI we need to setup:
 
+
 - User selects **sell** and **buy tokens** from the token selectors
 - Users inputs a **sellAmount**
 - Users can **“Connect Wallet”** powered by ConnectKit
@@ -24,9 +25,21 @@ This allowance approval will show up in the user's wallet for them to sign. Here
   - The Approval button allows users to set a token allowance
   - This is standard practice when users need to give a token allowance for a third-party to move funds on our behalf, in this case 0x Protocol’s smart contract, specifically the 0x Exchange Proxy to trade the user’s ERC20 tokens on their behalf.
   - Users can set an amount they are comfortable with, the default we’ve set is a really big number, but they can also choose only the amount they have in their wallet
-- When the user is happy with this trade, the button is now **“Review Trade** because the user already approved the token allowance, sotheywe can move forward to review the firm quote
+- When the user is happy with this trade, the button is now **“Review Trade** because the user already approved the token allowance, so they can move forward to review the firm quote
 
+To summarize, 
 
+<img width="340" alt="Screenshot 2024-04-19 at 2 09 48 PM" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/05346bc2-8bae-4219-aa7b-18f6195cf246">
+
+_The connected wallet has not approved a token allowance for DAI -> button reads "Approve"_
+
+<img width="350" alt="Screenshot 2024-04-19 at 2 10 02 PM" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/adae9e12-5b93-45c5-965f-1048ec4c466d">
+
+_The connected wallet has already approved a token allowance for WMATIC & has enough balance to proceed -> button reads "Review Trade"_
+
+<img width="366" alt="Screenshot 2024-04-19 at 2 11 54 PM" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/9f601765-5acd-4773-8f5d-caa3337ce6f3">
+
+_The connected wallet has already approved a token allowance for WMATIC, but does not have enough balance to proceed -> button reads "Insufficent Balance"_
 
 
 
@@ -157,10 +170,11 @@ args: [takerAddress, exchangeProxy(chainId)],
 ## Recap
 
 In this lesson, we covered: 
-* what is token allowance
-* how to approve one, specifically for the [0x Exchange Proxy smart contract](https://docs.0x.org/introduction/0x-cheat-sheet#exchange-proxy-addresses)
+* what is a token allowance
+* how to approve a token allowance, specifically for the [0x Exchange Proxy smart contract](https://docs.0x.org/introduction/0x-cheat-sheet#exchange-proxy-addresses)
 * how to modify the dApp UI to adjust to whether or not a token allowance approval is needed
 * check if the user has sufficient balance to proceed to place the trade
+
 
 See the full code for this lesson here: 
 
