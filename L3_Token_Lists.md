@@ -113,6 +113,7 @@ Additionally, 0x working on a Token Registry API that provides apps with dynamic
 ## Recap
 
 In this lesson, we learned about how to source token metadata, curate a token list, and surface this information to users through our UI. 
+<img width="422" alt="Screenshot 2024-04-19 at 2 07 34 PM" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/a5992263-0839-4ed0-9132-75d7b741aac8">
 
 See the final code for this lesson here: 
 
