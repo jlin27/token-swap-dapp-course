@@ -150,7 +150,8 @@ Next, we want to replace our "Dummy Connect Wallet" Button with a Custom Connect
 
 Now we should have a swap widget with two buttons for users to connect their wallets, powered by RainbowKit! Play around with these buttons, connect your wallet and switch chains.
 
-![L2_final](https://github.com/jlin27/token-swap-dapp-course/assets/8042156/c03d8bbd-a944-45d3-8681-7db2ab332c99)
+<img width="420" alt="Screenshot 2024-04-19 at 2 05 32 PM" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/38de042b-57b4-4419-b033-ddef26104b45">
+
 
 See the completed code here
 ```
