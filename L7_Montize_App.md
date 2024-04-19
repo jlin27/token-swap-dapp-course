@@ -49,16 +49,46 @@ Two recommended methods of displaying the fees are:
 
 When deciding how much to set your fee amount, consider the following. We recommend setting your pricing in a way that strengthens your bottom line, aligning it with the value you provide to customers while considering any transaction costs. Note that the additional affiliate fee will impact the price for the end user, so find that sweet spot where your solution remains competitive and impactful.
 
+## Option 2: Collect trade surplus
+
+The second option is to collect trade surplus, aka positive slippage. Trade surplus occurs when the user ends up receiving more tokens than their quoted amount. This occurs in trading when an order is executed at a better price than the initially quoted or expected price at the time the order was placed. This may happen for several reasons including:
+
+* fast-moving markets - volatile markets and prices can lead to favorable pricing
+* highly liuqidy markets - more buyers and sellers can lead to more favorable offers and bids
+* efficient trading platforms and routes - efficient trading platforms and routes can take advantage of breif moments when prices are more favorable
+
+0x Swap API can be easily configured so that you collect the trade surplus and send that to a specified address. This can be done by setting the `feeRecipientTradeSurplus` parameter in a Swap API request.
+
+`feeRecipientTradeSurplus` represents the wallet address you want to collect the fee in. When a transaction produces trade surplus, 100% of it will be collected in that wallet. The fee is received in the buyToken (the token that the user will receive). If you would like to receive a specific type of token (e.g. USDC), you will need to make that conversion on your own.
+
+`feeRecipientTradeSurplus` represents the wallet address you want to collect the fee in. When a transaction produces trade surplus, 100% of it will be collected in that wallet. The fee is received in the `buyToken` (the token that the user will receive). If you would like to receive a specific type of token (e.g. USDC), you will need to make that conversion on your own.
+
+When `feeRecipientTradeSurplus` is not specified, the feature is effectively OFF and all trade surplus will be passed back to the user.
+
+**Note:** Trade surplus is only sent to `feeRecipientTradeSurplus` for SELLs (i.e. when the sellAmount is specified). It is a no-op for BUYs (i.e. when the buyAmount is specified), which means the user will always receive the trade surplus.
+
+### Example API call
+
+```
+https://api.0x.org/swap/v1/quote             // Request a firm quote
+?sellToken=DAI                               // Sell DAI
+&sellAmount=4000000000000000000000           // Sell amount: 4000 (18 decimal)
+&buyToken=ETH                                // Buy ETH
+&takerAddress=$USER_TAKER_ADDRESS            // Address that will make the trade
+&feeRecipientTradeSurplus=$INTEGRATOR_WALLET_ADDRESS // The recipient of any trade surplus fees
+--header '0x-api-key: [API_KEY]'             // Replace with your own API key
+```
+
 ## Code
 
-Let's add an affiliate fee to our app. 
+Let's add the affiliate fee and trade surplus collection to our app. 
 
 ### PriceView
 First, let's add it in PriceView. We need to set the following constants:
 
 ```
 const AFFILIATE_FEE = 0.01; // Percentage of the buyAmount that should be attributed to feeRecipient as affiliate fees
-const FEE_RECIPIENT = "0x75A94931B81d81C7a62b76DC0FcFAC77FbE1e917"; // The ETH address that should receive affiliate fees
+const FEE_RECIPIENT = "0x75A94931B81d81C7a62b76DC0FcFAC77FbE1e917"; // The ETH address that should receive affiliate fees and trade surplus
 ```
 
 Then, we need to include these when we fetch the price from our `useEffect` hook:
@@ -71,9 +101,9 @@ Then, we need to include these when we fetch the price from our `useEffect` hook
       sellAmount: parsedSellAmount,
       buyAmount: parsedBuyAmount,
       takerAddress,
-      feeRecipient: FEE_RECIPIENT,
-      buyTokenPercentageFee: AFFILIATE_FEE,
-      feeRecipientTradeSurplus: FEE_RECIPIENT,
+      feeRecipient: FEE_RECIPIENT,  // affiliate fee collection
+      buyTokenPercentageFee: AFFILIATE_FEE,  // affiliate fee collection
+      feeRecipientTradeSurplus: FEE_RECIPIENT, // trade surplus collection
     };
 ...
 [
@@ -132,9 +162,9 @@ Then, we need to include these when we fetch the price from our `useEffect` hook
       buyToken: price.buyTokenAddress,
       sellAmount: price.sellAmount,
       takerAddress,
-      feeRecipient: FEE_RECIPIENT,
-      buyTokenPercentageFee: AFFILIATE_FEE,
-      feeRecipientTradeSurplus: FEE_RECIPIENT,
+      feeRecipient: FEE_RECIPIENT, // affiliate fee collection
+      buyTokenPercentageFee: AFFILIATE_FEE,  // affiliate fee collection
+      feeRecipientTradeSurplus: FEE_RECIPIENT, // trade surplus collection
     };
 ...
 [
@@ -173,37 +203,7 @@ Here's how it will look in QuoteView:
 
 <img width="367" alt="quoteView_with_fee" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/75b92fcf-8ca7-43f5-a436-8a87659668b8">
 
-That's it for collecting affiliate fees!
-
-## Option 2: Collect trade surplus
-
-Continue along if you'd also like to collect trade surplus, also known as positive slippage.  This occurs when the user ends up receiving more tokens than their quoted amount. This occurs in trading when an order is executed at a better price than the initially quoted or expected price at the time the order was placed. This may happen for several reasons including:
-
-* fast-moving markets - volatile markets and prices can lead to favorable pricing
-* highly liuqidy markets - more buyers and sellers can lead to more favorable offers and bids
-* efficient trading platforms and routes - efficient trading platforms and routes can take advantage of breif moments when prices are more favorable
-
-0x Swap API can be easily configured so that you collect the trade surplus and send that to a specified address. This can be done by setting the `feeRecipientTradeSurplus` parameter in a Swap API request.
-
-`feeRecipientTradeSurplus` represents the wallet address you want to collect the fee in. When a transaction produces trade surplus, 100% of it will be collected in that wallet. The fee is received in the buyToken (the token that the user will receive). If you would like to receive a specific type of token (e.g. USDC), you will need to make that conversion on your own.
-
-`feeRecipientTradeSurplus` represents the wallet address you want to collect the fee in. When a transaction produces trade surplus, 100% of it will be collected in that wallet. The fee is received in the `buyToken` (the token that the user will receive). If you would like to receive a specific type of token (e.g. USDC), you will need to make that conversion on your own.
-
-When `feeRecipientTradeSurplus` is not specified, the feature is effectively OFF and all trade surplus will be passed back to the user.
-
-**Note:** Trade surplus is only sent to `feeRecipientTradeSurplus` for SELLs (i.e. when the sellAmount is specified). It is a no-op for BUYs (i.e. when the buyAmount is specified), which means the user will always receive the trade surplus.
-
-### Example API call
-
-```
-https://api.0x.org/swap/v1/quote             // Request a firm quote
-?sellToken=DAI                               // Sell DAI
-&sellAmount=4000000000000000000000           // Sell amount: 4000 (18 decimal)
-&buyToken=ETH                                // Buy ETH
-&takerAddress=$USER_TAKER_ADDRESS            // Address that will make the trade
-&feeRecipientTradeSurplus=$INTEGRATOR_WALLET_ADDRESS // The recipient of any trade surplus fees
---header '0x-api-key: [API_KEY]'             // Replace with your own API key
-```
+That's it for collecting affiliate fees and trade surplus!
 
 ## Recap
 
