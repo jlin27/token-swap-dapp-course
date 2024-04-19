@@ -202,7 +202,7 @@ Lastly, we will display it in the UI:
 ```
 Here's how it will look in QuoteView:
 
-<img width="367" alt="quoteView_with_fee" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/75b92fcf-8ca7-43f5-a436-8a87659668b8">
+<img width="423" alt="Screenshot 2024-04-19 at 2 15 29 PM" src="https://github.com/jlin27/token-swap-dapp-course/assets/8042156/0002c5b1-9059-496f-b168-4a936477eac2">
 
 That's it for collecting affiliate fees and trade surplus!
 
