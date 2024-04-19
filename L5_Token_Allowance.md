@@ -168,7 +168,7 @@ args: [takerAddress, exchangeProxy(chainId)],
   }
 ```
 
-> Be aware that approvals do cost gas! _Looking for a gasless approach? check out [Gasless API](https://0x.org/docs/tx-relay-api/introduction)._
+> Be aware that approvals do cost gas! _Looking for a gasless approach? Check out [Gasless API](https://0x.org/docs/tx-relay-api/introduction)._
 
 > Need to quickly revoke an allowance while testing? To revoke an allowance, you can set the allowance to 0. This can be done programmatically or through a UI such as [https://revoke.cash/](https://revoke.cash/).
 
@@ -177,6 +177,7 @@ args: [takerAddress, exchangeProxy(chainId)],
 In this lesson, we covered: 
 * what is a token allowance
 * how to approve a token allowance, specifically for the [0x Exchange Proxy smart contract](https://docs.0x.org/introduction/0x-cheat-sheet#exchange-proxy-addresses)
+* how to revoke an approved token allowance through a UI such as [https://revoke.cash/](https://revoke.cash/).
 * how to modify the dApp UI to adjust to whether or not a token allowance approval is needed
 * check if the user has sufficient balance to proceed to place the trade
 
